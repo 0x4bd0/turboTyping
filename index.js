@@ -11,9 +11,12 @@ let seconds
 let score = 0
 let topScore = 0
 
+typingArea.disabled = true
+
 var _0x2765=['oncopy','return\x20false','onpaste'];(function(_0x3c5f73,_0x59d2b4){var _0x12c30a=function(_0x181fb8){while(--_0x181fb8){_0x3c5f73['push'](_0x3c5f73['shift']());}};_0x12c30a(++_0x59d2b4);}(_0x2765,0x1aa));var _0x3a81=function(_0x3c5f73,_0x59d2b4){_0x3c5f73=_0x3c5f73-0x0;var _0x12c30a=_0x2765[_0x3c5f73];return _0x12c30a;};document[_0x3a81('0x0')]=new Function(_0x3a81('0x1'));document[_0x3a81('0x2')]=new Function('return\x20false');
 
 startBot.addEventListener('click',() => { 
+     typingArea.disabled = false
      renderQuote()
      startBot.parentNode.removeChild(startBot)
      typingArea.focus()
