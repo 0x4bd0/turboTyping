@@ -2,6 +2,12 @@ const QUOTES_API = "https://api.quotable.io/random"
 const textArea = document.getElementById('text')
 const typingArea = document.getElementById('textType')
 
+
+typingArea.addEventListener('input',() => {
+   const quoteObject =  textArea.querySelector('span')
+   const typedObject = typingArea.value.split('')
+})
+
 const getQuote = () => {
   return  fetch(QUOTES_API)
           .then(res => res.json())

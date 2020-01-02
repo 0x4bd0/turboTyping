@@ -39,3 +39,7 @@ padding : 2rem
 .correct {
     color: greenyellow;
 }
+
+.incorrect {
+    color: greenyellow;
+}
