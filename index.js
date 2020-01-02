@@ -4,8 +4,17 @@ const typingArea = document.getElementById('textType')
 
 
 typingArea.addEventListener('input',() => {
-   const quoteObject =  textArea.querySelector('span')
+   const quoteObject =  textArea.querySelectorAll('span')
    const typedObject = typingArea.value.split('')
+   quoteObject.forEach((item,i)=>{
+    if (typedObject[i] === item.innerText) {
+            item.classList.add('correct')
+            item.classList.remove('incorrect')
+        } else {
+            item.classList.add('incorrect')
+            item.classList.add('correct')
+        } 
+   })
 })
 
 const getQuote = () => {
@@ -19,7 +28,6 @@ const renderQuote = async() =>{
     textArea.innerHTML = ''
     quote.split('').forEach(item => {
      const mySpan = document.createElement('span')
-     mySpan.classList = 'correct'
      mySpan.innerText = item
      textArea.appendChild(mySpan)
     });
