@@ -3,37 +3,47 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: azure;
+    background-color: #018383;
 }
 
 .container {
-background-color: darkkhaki;
+background-color: #f5dea3;
 border-radius: 25px;
 border :2rem;
 width: 700px;
 max-width: 90%;
-padding : 2rem
+padding : 2rem;
+margin-top: 5rem;
 }
 
 .time {
     position: absolute;
     top : 2rem;
     font-size : 5rem;
-    color: darkkhaki;
+    color: #42e6a4;
     font-weight: bold;
+}
+.score {
+    width: 100px; height: 100px; 
+    display: inline-block;
+    font-size: 20px
 }
 
 .text {
     margin-bottom: 2rem;
+    font-size: 20px
 }
 
 .textType {
+    border: 2px solid #02a8a8;
+    border-radius: 5px;
     background-color: transparent;
     outline: none;
     width :100%;
     margin : auto;
     resize : none;
     height: 7rem;
+    font-size: 18px;
 }
 
 .correct {
@@ -42,4 +52,32 @@ padding : 2rem
 
 .incorrect {
     color: red;
+}
+
+.scoreContianer{
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: -2rem;
+}
+
+.scoreText {
+    font-weight: bold;
+    color : #02a8a8
+}
+
+
+.bottomContainer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.start{
+    border: transparent;
+    height: 2rem;
+    width: 7rem;
+    border-radius: 5px;
+    background-color: #02a8a7;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
 }

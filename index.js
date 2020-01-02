@@ -2,8 +2,22 @@ const QUOTES_API = "https://api.quotable.io/random"
 const textArea = document.getElementById('text')
 const typingArea = document.getElementById('textType')
 const timerElement = document.getElementById('time')
-let endTime, seconds, interval, score, topScore
+const startBot = document.getElementById('start')
+let scoreElement = document.getElementById('score')
+let topScoreElement = document.getElementById('topScore')
+let interval
+let endTime
+let seconds
+let score = 0
+let topScore = 0
 
+var _0x2765=['oncopy','return\x20false','onpaste'];(function(_0x3c5f73,_0x59d2b4){var _0x12c30a=function(_0x181fb8){while(--_0x181fb8){_0x3c5f73['push'](_0x3c5f73['shift']());}};_0x12c30a(++_0x59d2b4);}(_0x2765,0x1aa));var _0x3a81=function(_0x3c5f73,_0x59d2b4){_0x3c5f73=_0x3c5f73-0x0;var _0x12c30a=_0x2765[_0x3c5f73];return _0x12c30a;};document[_0x3a81('0x0')]=new Function(_0x3a81('0x1'));document[_0x3a81('0x2')]=new Function('return\x20false');
+
+startBot.addEventListener('click',() => { 
+     renderQuote()
+     startBot.parentNode.removeChild(startBot)
+     typingArea.focus()
+    })
 
 typingArea.addEventListener('input',() => {
    const quoteObject =  textArea.querySelectorAll('span')
@@ -13,7 +27,9 @@ typingArea.addEventListener('input',() => {
        if(typedObject[i] == null) {
             item.classList.remove('correct')
             item.classList.remove('incorrect')
-            correct = false
+            correct = false;
+            score = 0
+            scoreElement.innerText = 0
        }
         else if (typedObject[i] === item.innerText) {
             item.classList.add('correct')
@@ -22,9 +38,17 @@ typingArea.addEventListener('input',() => {
             item.classList.add('incorrect')
             item.classList.remove('correct')
             correct = false
+            score = 0
+            scoreElement.innerText  = 0
         } 
    })
-   if (correct) renderQuote()
+   if (correct) {
+        score++
+        scoreElement.innerText = score
+        if(topScore<score){topScoreElement.innerText=scoreElement.innerText}
+        clearInterval(interval)
+        renderQuote()
+    }
 })
 
 const getQuote = () => {
@@ -42,13 +66,18 @@ const renderQuote = async() =>{
      mySpan.innerText = item
      textArea.appendChild(mySpan)
     });
-    timer((textArea.querySelectorAll('span').length/10))
+    timer((textArea.querySelectorAll('span').length/5))
 }
 
 
 const timerCounter = () => {
     timerElement.innerText = updateTimer()
-    if(endTime <= new Date()){renderQuote();clearInterval(interval)}
+    if(endTime <= new Date()){
+        clearInterval(interval)
+        score = 0
+        scoreElement.innerText  = 0
+        renderQuote()
+    }
 }
 
 const timer = (secs) => {
@@ -62,5 +91,3 @@ const timer = (secs) => {
 const updateTimer = () => {
  return seconds--
 }
-
-renderQuote()
