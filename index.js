@@ -1,12 +1,14 @@
 const QUOTES_API = "https://api.quotable.io/random"
+const textArea = document.getElementById('text')
 
-const getQuote = async() => {
-  return await fetch(QUOTES_API)
+const getQuote = () => {
+  return  fetch(QUOTES_API)
+          .then(res => res.json())
+          .then(data => data.content)
 }
 
 const next = async() =>{
-   let x = await getQuote();
-   console.log(x)
+    textArea.innerText = await getQuote()
 }
 
 
