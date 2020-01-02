@@ -41,5 +41,5 @@ padding : 2rem
 }
 
 .incorrect {
-    color: greenyellow;
+    color: red;
 }
