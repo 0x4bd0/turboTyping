@@ -2,6 +2,7 @@ const QUOTES_API = "https://api.quotable.io/random"
 const textArea = document.getElementById('text')
 const typingArea = document.getElementById('textType')
 const timerElement = document.getElementById('time')
+let endTime, seconds, interval, score, topScore
 
 
 typingArea.addEventListener('input',() => {
@@ -41,15 +42,13 @@ const renderQuote = async() =>{
      mySpan.innerText = item
      textArea.appendChild(mySpan)
     });
-    timer((textArea.querySelectorAll('span').length/30))
+    timer((textArea.querySelectorAll('span').length/10))
 }
 
-let endTime
-let seconds
 
 const timerCounter = () => {
     timerElement.innerText = updateTimer()
-    if(endTime <= new Date()){renderQuote()}
+    if(endTime <= new Date()){renderQuote();clearInterval(interval)}
 }
 
 const timer = (secs) => {
@@ -57,7 +56,7 @@ const timer = (secs) => {
     timerElement.innerText = 0
     endTime = new Date()
     endTime.setSeconds( endTime.getSeconds() + secs )
-    setInterval(timerCounter,1000)
+    interval = setInterval(timerCounter,1000)
 }
 
 const updateTimer = () => {
