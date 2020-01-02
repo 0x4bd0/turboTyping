@@ -1,5 +1,6 @@
 const QUOTES_API = "https://api.quotable.io/random"
 const textArea = document.getElementById('text')
+const typingArea = document.getElementById('textType')
 
 const getQuote = () => {
   return  fetch(QUOTES_API)
@@ -7,9 +8,17 @@ const getQuote = () => {
           .then(data => data.content)
 }
 
-const next = async() =>{
-    textArea.innerText = await getQuote()
+const renderQuote = async() =>{
+    let quote = await getQuote()
+    textArea.innerHTML = ''
+    quote.split('').forEach(item => {
+     const mySpan = document.createElement('span')
+     mySpan.classList = 'correct'
+     mySpan.innerText = item
+     textArea.appendChild(mySpan)
+    });
+    typingArea.innerText = null
 }
 
 
-next()
+renderQuote()
